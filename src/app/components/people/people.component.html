@@ -1,0 +1,34 @@
+<app-loadingspinner [showSpinner]="isLoading"></app-loadingspinner>
+
+
+<div class="container my-3">
+    <div class="row" id="page-content">
+        <div *ngFor="let person of popularPeopleList ; let i = index" class="col-md-3 my-2" [style]="person.profile_path == null ? 'display:none' : 'display:block'">
+            <div class="person-item">
+                    <div class="person-image">
+                        <img class="w-100 rounded" [src]="imgPrefix+person.profile_path" alt="">
+
+                        <div class="person-overlay">
+                            <button class="btn btn-info">See more</button>
+                        </div>
+                    </div>
+
+
+                    <h3 class="person-title">{{person.name}}</h3>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+    <ngb-pagination class="pagination-container d-flex justify-content-center" (pageChange)="goToPage($event)"
+        [(page)]="currentPageNumber" [maxSize]="5" [rotate]="true" [collectionSize]="5000">
+
+        <ng-template ngbPaginationPrevious><i class="fa fa-chevron-left"></i></ng-template>
+        <ng-template ngbPaginationNext><i class="fa fa-chevron-right"></i></ng-template>
+    </ngb-pagination>
+
+
+</div>
+

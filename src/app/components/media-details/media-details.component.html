@@ -1,0 +1,77 @@
+<app-loadingspinner [showSpinner]="isLoading"></app-loadingspinner>
+
+
+<div class="container my-4">
+
+    <div class="row" *ngIf="mediaType=='movie'">
+        <div class="col-md-5">
+            <img class="w-100 rounded" [src]="imgPrefix+movieDetails.poster_path" alt="">
+        </div>
+
+        <div class="col-md-7">
+            <div class="movie-data mx-2 my-3">
+                <h2 class="font-weight-bold">{{movieDetails.title}}</h2>
+                <p class="light-color">{{movieDetails.tagline}}</p>
+        
+                <div class="movie-genres d-flex flex-wrap">
+                    <div *ngFor="let genre of mediaGenres" class="genre bg-info p-2 my-2">
+                        {{genre.name}}
+                    </div>
+                </div>
+        
+                <p class="my-4">Vote: <span class="mx-2">{{movieDetails.vote_average}} <i class="fas fa-star text-info"></i></span></p>
+        
+                <p class="my-4">Vote count: <span class="mx-2">{{movieDetails.vote_count}} <i class="fas fa-user-friends text-info"></i></span></p>
+        
+                <p class="my-4">Popularity: {{movieDetails.popularity}}</p>
+        
+                <p class="my-4">Release date: {{movieDetails.release_date}}</p>
+        
+                <span class="font-weight-bolder">Overview</span>
+                
+                <p class="my-3 w-75 light-color">{{movieDetails.overview}}</p>
+        
+                <a class="btn btn-info" [href]="imdbPrefix+movieDetails.imdb_id" target="_blank">Movie page</a>
+        
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="mediaType=='tv'">
+        <div class="col-md-5">
+            <img class="w-100 rounded" [src]="imgPrefix+tvDetails.poster_path" alt="">
+        </div>
+
+        <div class="col-md-7">
+            <div class="tv-data mx-lg-2 my-3">
+                <h2 class="font-weight-bold">{{tvDetails.name}}</h2>
+                <p class="light-color">{{tvDetails.tagline}}</p>
+        
+                <div class="movie-genres d-flex flex-wrap">
+                    <div *ngFor="let genre of mediaGenres" class="genre bg-info p-2 my-2">
+                        {{genre.name}}
+                    </div>
+                </div>
+        
+                <p class="my-4">Vote: <span class="mx-2">{{tvDetails.vote_average}} <i class="fas fa-star text-info"></i></span></p>
+        
+                <p class="my-4">Vote count: <span class="mx-2">{{tvDetails.vote_count}} <i class="fas fa-user-friends text-info"></i></span></p>
+        
+                <p class="my-4">Popularity: {{tvDetails.popularity}}</p>
+        
+                <p class="my-4">First air date: {{tvDetails.first_air_date|date}}</p>
+
+
+                <span class="font-weight-bolder">Overview</span>
+                
+                <p class="my-3 w-75 light-color">{{tvDetails.overview}}</p>
+        
+                <a class="btn btn-info" [href]="tvDetails.homepage" target="_blank">TV show page</a>
+        
+                
+            </div>
+        </div>
+    </div>
+
+</div>

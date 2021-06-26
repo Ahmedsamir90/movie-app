@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg overflow-hidden">
+  <a class="navbar-brand" routerLink="/home">Noxe</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars text-light"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul *ngIf='loginState' class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <a class="nav-link" (click)="closeNavbar()" routerLink="/home" routerLinkActive="active-link">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" (click)="closeNavbar()" routerLink="/movies" routerLinkActive="active-link"
+          (click)="goToFirstMediaPage('movies')">Movies</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" (click)="closeNavbar()" routerLink="/tvshows" routerLinkActive="active-link"
+          (click)="goToFirstMediaPage('tvshows')">Tv Show</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" (click)="closeNavbar()" routerLink="/people" routerLinkActive="active-link"
+        (click)="goToFirstMediaPage('people')">People</a>
+      </li>
+
+
+    </ul>
+
+    <div class="nav-rest-container">
+      <form *ngIf='loginState' class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search">
+        <button class="btn btn-dark"><i class="fas fa-search"></i></button>
+      </form>
+
+      <div class="social-media">
+        <a href="#facebook" (click)="closeNavbar()"> <i class="fab mx-2 fa-facebook"></i></a>
+        <a href="#spotify" (click)="closeNavbar()"><i class="fab mx-2 fa-spotify"></i></a>
+        <a href="#instagram" (click)="closeNavbar()"><i class="fab mx-2 fa-instagram"></i></a>
+        <a href="#youtube" (click)="closeNavbar()"><i class="fab mx-2 fa-youtube"></i></a>
+      </div>
+
+
+      <ul class="auth-links">
+
+        <li *ngIf='!loginState' class="nav-item">
+          <a class="nav-link" (click)="closeNavbar()" routerLink="login" routerLinkActive="active-link">Login</a>
+        </li>
+
+        <li *ngIf='!loginState' class="nav-item">
+          <a class="nav-link" (click)="closeNavbar()" routerLink="register" routerLinkActive="active-link">Register</a>
+        </li>
+
+        <li *ngIf='loginState' class="nav-item">
+          <a class="nav-link" (click)="logout()">Logout</a>
+        </li>
+
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
